@@ -8,7 +8,7 @@ const API = {
     }
     const json = await res.json();
 
-    return json[json.length - 1];
+    return json[0];
   },
   async addExercise(data) {
     const id = location.search.split("=")[1];
@@ -38,6 +38,8 @@ const API = {
   async getWorkoutsInRange() {
     const res = await fetch(`/api/workouts/range`);
     const json = await res.json();
+    // reverse array to get chronological order
+    json.reverse();
 
     return json;
   },
